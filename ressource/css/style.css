@@ -18,7 +18,7 @@ body {
 header {
     width: var(--width_mobile);
     height: 137px;
-    background-image: url("banner_mobile.png");
+    background-image: url("../image/banner_mobile.png");
 }
 
 .category_title {
@@ -33,6 +33,7 @@ header {
     text-align: center;
     border-radius: 25px;
     margin: auto;
+    cursor: pointer;
 }
 
 .button--style1 {
@@ -141,6 +142,10 @@ header {
     margin-bottom: 15px;
 }
 
+.custom_display:nth-last-child(-n + 4) {
+    display: none;
+}
+
 #select_container {
     text-align: center;
 }
@@ -163,7 +168,7 @@ header {
     header {
         width: var(--width_tablet);
         height: 137px;
-        background-image: url("banner_tablet.png");
+        background-image: url("../image/banner_tablet.png");
     }
 
     #best_film_container h2{
@@ -213,6 +218,10 @@ header {
         width: 289px;
         height: 286px;
     }
+
+    .custom_display:nth-last-child(-n + 2) {
+        display: block;
+    }
 }
 
 /* Styles pour Desktop et écrans très larges */
@@ -224,7 +233,7 @@ header {
     header {
         width: var(--width_desktop);
         height: 122px;
-        background-image: url("banner_desktop.png");
+        background-image: url("../image/banner_desktop.png");
     }
 
     #best_film_container h2{
@@ -275,7 +284,11 @@ header {
         height: 247px;
     }
 
-    .button3 {
+    .custom_display:nth-last-child(-n + 6) {
+        display: block;
+    }
+
+    .button--style3 {
         display: none;
     }
 

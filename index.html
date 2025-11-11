@@ -3,8 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <title>JustStreamIt</title>
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="ressources/style.css">
+
+        <script type="module" src="ressource/javascript/script.js" defer></script>
+
+        <link rel="stylesheet" href="ressource/css/style.css">
+
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
@@ -16,7 +21,7 @@
         <h1 class="category_title">Meilleur film</h1>
         <div id="best_film_container">
             <div class="section1">
-                <img src="https://picsum.photos/298/334" alt="">
+                <img src="https://picsum.photos/298/334" alt="L'affichage de cette image est impossible.">
             </div>
             <div>
                 <h2>XX XXXXX XXXX XXXXXXXXXXX</h2>
@@ -26,28 +31,7 @@
         </div>
         <h1 class="category_title">Films les mieux notés</h1>
         <div id="best_score_container_full">
-            <div class="best_score_container">
-                <img src="https://picsum.photos/329/319" alt="">
-                <div class="section1">
-                    <h2>Titre du bandeau</h2>
-                    <div class="button button--style2">Détail</div>
-                </div>
-            </div>
-            <div class="best_score_container">
-                <img src="https://picsum.photos/329/319" alt="">
-                <div class="section1">
-                    <h2>Titre du bandeau</h2>
-                    <div class="button button--style2">Détail</div>
-                </div>
-            </div>
-            <div class="best_score_container">
-                <img src="https://picsum.photos/329/319" alt="">
-                <div class="section1">
-                    <h2>Titre du bandeau</h2>
-                    <div class="button button--style2">Détail</div>
-                </div>
-            </div>
-            <div class="best_score_container">
+            <div class="best_score_container custom_display">
                 <img src="https://picsum.photos/329/319" alt="">
                 <div class="section1">
                     <h2>Titre du bandeau</h2>
@@ -55,19 +39,18 @@
                 </div>
             </div>
         </div>
-        <div class="button button--style3">Voir moins</div>
-            <h1 class="category_title">Autres :</h1>
-            <div id="select_container">
-                <select id="select_category">
-                    <option value="action">Films d'action</option>
-                    <option value="comedie">Comédies</option>
-                    <option value="famille">Famille</option>
-                    <option value="fantasy">Films de fantasy</option>
-                    <option value="horreur">Films d'horreur</option>
-                    <option value="fiction">Science-fiction</option>
-                    <option value="western">Westerns</option>
-                </select>
-            </div>
+        <div class="button button--style3 custom_display_action">Voir plus</div>
+        <h1 class="category_title">Autres :</h1>
+        <div id="select_container">
+            <select id="select_category">
+                <option value="action">Films d'action</option>
+                <option value="comedie">Comédies</option>
+                <option value="famille">Famille</option>
+                <option value="fantasy">Films de fantasy</option>
+                <option value="horreur">Films d'horreur</option>
+                <option value="fiction">Science-fiction</option>
+                <option value="western">Westerns</option>
+            </select>
+        </div>
     </body>
 </html>
-<!--<script src="ressources/script.js"></script>-->
