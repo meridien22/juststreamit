@@ -54,8 +54,9 @@ export async function getTheBestMovie() {
  * Met à jour la section "meilleur film" de la page HTML.
  * * @param {json} movie - Objet JSON représentant un film.
  */
-export async function updateBestMovie(movie) {
-    setSrcImageMovie("#best_film_container img", movie.image_url)
+export function updateBestMovie(movie) {
+    const element = document.querySelector("#best_film_container");
+    setSrcImageMovie(element, movie.image_url)
 
     const titleMovie = document.querySelector("#best_film_container h2");
     titleMovie.innerText = movie.title
@@ -70,8 +71,8 @@ export async function updateBestMovie(movie) {
  * * @param {string} selector - Sélecteur CSS de la balise image
  * @param {string} url - Url de l'image
  */
-function setSrcImageMovie(selector, url) {
-    const imageMovie = document.querySelector(selector);
+function setSrcImageMovie(element, url) {
+    const imageMovie = element.querySelector("img");
     imageMovie.src = url
     imageMovie.addEventListener('error', () => {
         imageMovie.src = "https://picsum.photos/298/334"; 
@@ -101,12 +102,13 @@ export async function getBestMovie(category = null, idMovie = null) {
     // les résultats des 2 premières pages
     const movieTab3 = [...movieTab2, ...movieTab1];
     // on enlève un film si besoin
+    let movieTab4 = []
     if (idMovie != null) {
-        const movieTab4 = movieTab3.filter(movie => { return movie.id != idMovie});
+        movieTab4 = movieTab3.filter(movie => { return movie.id != idMovie});
     } else {
-        const movieTab4 = [...movieTab3];
+        movieTab4 = [...movieTab3];
     }
-    
+    // On ne retient que les 6 derniers éléments
     const movieTab5 = movieTab4.slice(0 ,6);
     return movieTab5;
 }
@@ -115,48 +117,62 @@ export async function getBestMovie(category = null, idMovie = null) {
  * Met à jour la section "Films les mieux notés" de la page HTML.
  * * @param {table} movieTab - Tableau des 6 meilleurs films représentés par des pbjet Json.
  */
-export async function updateBestMovieTab(movieTab) {
+export async function updateMovieTab(movieTab, selector) {
     // Récupération du point d'insertion
-    const base_node = document.querySelector("#best_score_container_full");
+    const base_node = document.querySelector(`#${selector}`);
     // Récupération de structure modèle
-	const structure = document.querySelector("#best_score_container_full .best_score_container");
-    const modele = structure.cloneNode(true)
+	const structureTab = document.querySelectorAll(`#${selector} .container_movie`);
+    const modele = structureTab[0].cloneNode(true);
     // on supprime la strcture modèle pour pouvoir faire une boucle avec la tableau
-    structure.remove()
+    for (let i = 0; i < structureTab.length; i++) {
+        structureTab[i].remove();
+    }
     // on parcourt la tableau et on met à jour les éléments HTML et on les ajoutent
     for (let i = 0; i < movieTab.length; i++) {
         const movie = movieTab[i];
-        let element = modele.cloneNode(true)
-        const h2 = element.querySelector("h2")
-        h2.innerText = movie.title
-        base_node.appendChild(element)
-        setSrcImageMovie("#best_score_container_full img", movie.image_url)
+        let element = modele.cloneNode(true);
+        const h2 = element.querySelector("h2");
+        h2.innerText = movie.title;
+        base_node.appendChild(element);
+        setSrcImageMovie(element, movie.image_url);
     }
 }
 
 /**
- * Affecte les actions click au boutons pour qu'ils puissent affichent tous les films
- * ou seulement une partie
+ * Affecte l'action click au boutons "Voir plus" / "Voir moins" pour qu'ils puissent affichent 
+ * tous les films ou seulement une partie
  */
-export function setActionDisplay(){
-    const button_display = document.querySelectorAll(".custom_display_action");
-    for (let i = 0; i < button_display.length; i++) {
-        button_display[i].addEventListener("click", function (event) {
-            const text = event.target.innerText
-            if (text === "Voir plus"){
-                event.target.innerText = "Voir moins"
-                const div_display = document.querySelectorAll(".custom_display");
-                for (let j = 0; j < div_display.length; j++) {
-                    div_display[j].classList.remove('custom_display');
-                }
-            }else{
-                event.target.innerText = "Voir plus"
-                const div_display = document.querySelectorAll(".best_score_container");
-                for (let j = 0; j < div_display.length; j++) {
-                    div_display[j].classList.add('custom_display');
-                }
+export function setActionDisplay(selector){
+    const button_display = document.querySelector(`.${selector}`);
+    button_display.addEventListener("click", function (event) {
+        const text = event.target.innerText
+        if (text === "Voir plus"){
+            event.target.innerText = "Voir moins"
+            const div_display = document.querySelectorAll(`#${selector} .custom_display`);
+            for (let j = 0; j < div_display.length; j++) {
+                div_display[j].classList.remove('custom_display');
             }
-            
+        }else{
+            event.target.innerText = "Voir plus"
+            const div_display = document.querySelectorAll(`#${selector} .container_movie`);
+            for (let j = 0; j < div_display.length; j++) {
+                div_display[j].classList.add('custom_display');
+            }
         }
-    )}
+    })
+}
+
+/**
+ * Affecte l'action à la selection d'une catégorie 
+ */
+export function setActionSelect(selector){
+    const selectTab = document.querySelectorAll(`.${selector}`);
+    for (let i = 0; i < selectTab.length; i++) {
+        let select = selectTab[i]
+        select.addEventListener('change', async (event) => {
+            const selectedValue = event.target.value; 
+            let bestMovieTab = await getBestMovie(selectedValue, null);
+            updateMovieTab(bestMovieTab, "movie_autre1")
+        });
+    }
 }

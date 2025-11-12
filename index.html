@@ -8,7 +8,9 @@
 
         <script type="module" src="ressource/javascript/script.js" defer></script>
 
-        <link rel="stylesheet" href="ressource/css/style.css">
+        <link rel="stylesheet" href="ressource/css/style_mobile.css">
+        <link rel="stylesheet" href="ressource/css/style_tablet.css">
+        <link rel="stylesheet" href="ressource/css/style_desktop.css">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +18,8 @@
     </head>
     <body>
         <header>
-
+        <!-- ---------------------------------------------------------------------------- -->
+        <!-- ---------------------------------------------------------------------------- -->
         </header>
         <h1 class="category_title">Meilleur film</h1>
         <div id="best_film_container">
@@ -29,9 +32,11 @@
                 <div class="button button--style1">Détail</div>
             </div>
         </div>
+        <!-- ---------------------------------------------------------------------------- -->
+        <!-- ---------------------------------------------------------------------------- -->
         <h1 class="category_title">Films les mieux notés</h1>
-        <div id="best_score_container_full">
-            <div class="best_score_container custom_display">
+        <div id="best_movie_all_category" class="container_movie_full">
+            <div class="container_movie custom_display">
                 <img src="https://picsum.photos/329/319" alt="">
                 <div class="section1">
                     <h2>Titre du bandeau</h2>
@@ -39,18 +44,67 @@
                 </div>
             </div>
         </div>
-        <div class="button button--style3 custom_display_action">Voir plus</div>
-        <h1 class="category_title">Autres :</h1>
-        <div id="select_container">
-            <select id="select_category">
-                <option value="action">Films d'action</option>
-                <option value="comedie">Comédies</option>
-                <option value="famille">Famille</option>
-                <option value="fantasy">Films de fantasy</option>
-                <option value="horreur">Films d'horreur</option>
-                <option value="fiction">Science-fiction</option>
-                <option value="western">Westerns</option>
+        <div class="button button--style3 custom_display_action best_movie_all_category">Voir plus</div>
+        <!-- ---------------------------------------------------------------------------- -->
+        <!-- ---------------------------------------------------------------------------- -->
+        <h1 class="category_title">Mystery</h1>
+        <div id="movie_category1" class="container_movie_full">
+            <div class="container_movie custom_display">
+                <img src="https://picsum.photos/329/319" alt="">
+                <div class="section1">
+                    <h2>Titre du bandeau</h2>
+                    <div class="button button--style2">Détail</div>
+                </div>
+            </div>
+        </div>
+        <div class="button button--style3 custom_display_action movie_category1">Voir plus</div>
+        <!-- ---------------------------------------------------------------------------- -->
+        <!-- ---------------------------------------------------------------------------- -->
+        <h1 class="category_title">Fantasy</h1>
+        <div id="movie_category2" class="container_movie_full">
+            <div class="container_movie custom_display">
+                <img src="https://picsum.photos/329/319" alt="">
+                <div class="section1">
+                    <h2>Titre du bandeau</h2>
+                    <div class="button button--style2">Détail</div>
+                </div>
+            </div>
+        </div>
+        <div class="button button--style3 custom_display_action movie_category2">Voir plus</div>
+        <div class="select_container">
+            <h1 class="category_title">Autres :</h1>
+            <select class="select_category">
+                <option value="action">Action</option>
+                <option value="adventure">Aventure</option>
+                <option value="animation">Animation</option>
+                <option value="biography">Biographie</option>
+                <option value="comedy">Comédie</option>
+                <option value="crime">Crime</option>
+                <option value="drama">Drame</option>
+                <option value="family">Famille</option>
+                <option value="fantasy">Fantastic</option>
+                <option value="history">Histoire</option>
+                <option value="horror">Horreur</option>
+                <option value="music">Musique</option>
+                <option value="musical">Musical</option>
+                <option value="mystery">Mystère</option>
+                <option value="romance">Romance</option>
+                <option value="sci-Fi">Science-fiction</option>
+                <option value="sport">Sport</option>
+                <option value="thriller">Thriller</option>
+                <option value="war">War</option>
+                <option value="western">Western</option>
             </select>
         </div>
+        <div id="movie_autre1" class="container_movie_full">
+            <div class="container_movie custom_display">
+                <img src="https://picsum.photos/329/319" alt="">
+                <div class="section1">
+                    <h2>Titre du bandeau</h2>
+                    <div class="button button--style2">Détail</div>
+                </div>
+            </div>
+        </div>
+        <div class="button button--style3 custom_display_action movie_autre1">Voir plus</div>
     </body>
 </html>

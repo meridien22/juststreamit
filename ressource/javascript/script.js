@@ -1,12 +1,24 @@
-import { getTheBestMovie, updateBestMovie, getBestMovie,  updateBestMovieTab,
-    setActionDisplay
+import { getTheBestMovie, updateBestMovie, getBestMovie,  updateMovieTab,
+    setActionDisplay, setActionSelect
 } from "./movie.js";
 
-
-setActionDisplay()
+setActionDisplay("best_movie_all_category")
+setActionDisplay("movie_category1")
+setActionDisplay("movie_category2")
+setActionDisplay("movie_autre1")
+setActionSelect("select_category")
 
 const bestMovie = await getTheBestMovie();
 updateBestMovie(bestMovie)
 
-const bestMovieTab = await getBestMovie(null, bestMovie.id);
-updateBestMovieTab(bestMovieTab)
+let bestMovieTab = await getBestMovie(null, bestMovie.id);
+updateMovieTab(bestMovieTab, "best_movie_all_category")
+
+bestMovieTab = await getBestMovie("Mystery", null);
+updateMovieTab(bestMovieTab, "movie_category1")
+
+bestMovieTab = await getBestMovie("Fantasy", null);
+updateMovieTab(bestMovieTab, "movie_category2")
+
+bestMovieTab = await getBestMovie("Action", null);
+updateMovieTab(bestMovieTab, "movie_autre1")

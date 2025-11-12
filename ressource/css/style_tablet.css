@@ -1,0 +1,72 @@
+/* Styles pour Tablette et écrans plus larges */
+@media screen and (min-width: 768px) and (max-width: 1051px) {
+    body{
+        width: var(--width_tablet);
+    }
+
+    header {
+        width: var(--width_tablet);
+        height: 137px;
+        background-image: url("../image/banner_tablet.png");
+    }
+
+    #best_film_container h2{
+        text-align: left;
+    }
+
+    #best_film_container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    #best_film_container p{
+        width: 415px;
+    }
+
+    .button--style1 {
+        margin-left: 60%;
+    }
+
+    .category_title {
+        text-align: left;
+    }
+
+    #best_film_container .section1 {
+        width: 168px;
+        height: 246px;
+    }
+
+    #best_film_container img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .container_movie_full {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .container_movie {
+        position: relative;
+        width: 289px;
+        height: 286px;
+    }
+
+    .custom_display:nth-last-child(-n + 2) {
+        display: block;
+    }
+
+.select_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+
+}
