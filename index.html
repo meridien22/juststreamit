@@ -6,7 +6,7 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <script type="module" src="ressource/javascript/script.js" defer></script>
+        <script type="module" src="ressource/javascript/script.js"></script>
 
         <link rel="stylesheet" href="ressource/css/style_mobile.css">
         <link rel="stylesheet" href="ressource/css/style_tablet.css">
@@ -18,60 +18,56 @@
     </head>
     <body>
         <header>
-        <!-- ---------------------------------------------------------------------------- -->
-        <!-- ---------------------------------------------------------------------------- -->
+
         </header>
         <h1 class="category_title">Meilleur film</h1>
-        <div id="best_film_container">
+        <section id="best_film_container">
             <div class="section1">
                 <img src="https://picsum.photos/298/334" alt="L'affichage de cette image est impossible.">
             </div>
             <div>
                 <h2>XX XXXXX XXXX XXXXXXXXXXX</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
-                <div class="button button--style1">Détail</div>
+                <button  class="button button--style1 open">Détail</button >
             </div>
-        </div>
-        <!-- ---------------------------------------------------------------------------- -->
-        <!-- ---------------------------------------------------------------------------- -->
+        </section>
+
         <h1 class="category_title">Films les mieux notés</h1>
-        <div id="best_movie_all_category" class="container_movie_full">
+        <section id="best_movie_all_category" class="container_movie_full">
             <div class="container_movie custom_display">
-                <img src="https://picsum.photos/329/319" alt="">
+                <img src="https://picsum.photos/329/319" alt="L'affichage de cette image est impossible.">
                 <div class="section1">
                     <h2>Titre du bandeau</h2>
-                    <div class="button button--style2">Détail</div>
+                    <button class="button button--style2 open">Détail</button>
                 </div>
             </div>
-        </div>
-        <div class="button button--style3 custom_display_action best_movie_all_category">Voir plus</div>
-        <!-- ---------------------------------------------------------------------------- -->
-        <!-- ---------------------------------------------------------------------------- -->
+        </section>
+        <button class="button button--style3 custom_display_action best_movie_all_category">Voir plus</button>
+
         <h1 class="category_title">Mystery</h1>
-        <div id="movie_category1" class="container_movie_full">
+        <section id="movie_category1" class="container_movie_full">
             <div class="container_movie custom_display">
-                <img src="https://picsum.photos/329/319" alt="">
+                <img src="https://picsum.photos/329/319" alt="L'affichage de cette image est impossible.">
                 <div class="section1">
                     <h2>Titre du bandeau</h2>
-                    <div class="button button--style2">Détail</div>
+                    <button class="button button--style2 open">Détail</button>
                 </div>
             </div>
-        </div>
-        <div class="button button--style3 custom_display_action movie_category1">Voir plus</div>
-        <!-- ---------------------------------------------------------------------------- -->
-        <!-- ---------------------------------------------------------------------------- -->
+        </section>
+        <button class="button button--style3 custom_display_action movie_category1">Voir plus</button>
+
         <h1 class="category_title">Fantasy</h1>
-        <div id="movie_category2" class="container_movie_full">
+        <section id="movie_category2" class="container_movie_full">
             <div class="container_movie custom_display">
-                <img src="https://picsum.photos/329/319" alt="">
+                <img src="https://picsum.photos/329/319" alt="L'affichage de cette image est impossible.">
                 <div class="section1">
                     <h2>Titre du bandeau</h2>
-                    <div class="button button--style2">Détail</div>
+                    <div class="button button--style2 open">Détail</div>
                 </div>
             </div>
-        </div>
-        <div class="button button--style3 custom_display_action movie_category2">Voir plus</div>
-        <div class="select_container">
+        </section>
+        <button class="button button--style3 custom_display_action movie_category2">Voir plus</button>
+        <section class="select_container">
             <h1 class="category_title">Autres :</h1>
             <select class="select_category">
                 <option value="action">Action</option>
@@ -95,16 +91,35 @@
                 <option value="war">War</option>
                 <option value="western">Western</option>
             </select>
-        </div>
-        <div id="movie_autre1" class="container_movie_full">
+        </section>
+        <section id="movie_autre1" class="container_movie_full">
             <div class="container_movie custom_display">
-                <img src="https://picsum.photos/329/319" alt="">
+                <img src="https://picsum.photos/329/319" alt="L'affichage de cette image est impossible.">
                 <div class="section1">
                     <h2>Titre du bandeau</h2>
-                    <div class="button button--style2">Détail</div>
+                    <button class="button button--style2 open">Détail</button>
                 </div>
             </div>
-        </div>
-        <div class="button button--style3 custom_display_action movie_autre1">Voir plus</div>
+        </section>
+        <button class="button button--style3 custom_display_action movie_autre1">Voir plus</button>
+
+         <dialog id="modal_dialog">
+            <div class="modal_container">
+                <div class="detail_container">
+                    <div class="title_container">
+                        <h3>Titre 3</h3>
+                        <img class="close_icon" src="../../ressource/image/close_icon.svg" alt="L'affichage de cette image est impossible.">
+                    </div>
+                    <p class="detail1"></p>
+                    <p class="detail2"></p>
+                </div>
+                <div class="image_container">
+                    <img src="https://picsum.photos/500/500" alt="L'affichage de cette image est impossible.">
+                </div>
+                <p class="description"></p>
+                <p class="contribution"></p>
+            </div>
+            <button class="button_close button button--style1">Fermer</button>
+        </dialog>
     </body>
 </html>

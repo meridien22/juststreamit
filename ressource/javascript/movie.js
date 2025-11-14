@@ -1,3 +1,5 @@
+import {getMovie} from "./modal.js";
+
 /**
  * Retourne le meilleur film.
  * Critère pris en compte : note IMDB, année, nombre de vote
@@ -59,10 +61,13 @@ export function updateBestMovie(movie) {
     setSrcImageMovie(element, movie.image_url)
 
     const titleMovie = document.querySelector("#best_film_container h2");
-    titleMovie.innerText = movie.title
+    titleMovie.innerText = movie.original_title
 
     const resumeMovie = document.querySelector("#best_film_container p");
     resumeMovie.innerText = movie.description
+
+    const boutton = document.querySelector(".button.button--style1");
+    boutton.dataset.id_movie = movie.id;
 }
 
 /**
@@ -71,7 +76,7 @@ export function updateBestMovie(movie) {
  * * @param {string} selector - Sélecteur CSS de la balise image
  * @param {string} url - Url de l'image
  */
-function setSrcImageMovie(element, url) {
+export function setSrcImageMovie(element, url) {
     const imageMovie = element.querySelector("img");
     imageMovie.src = url
     imageMovie.addEventListener('error', () => {
@@ -110,7 +115,16 @@ export async function getBestMovie(category = null, idMovie = null) {
     }
     // On ne retient que les 6 derniers éléments
     const movieTab5 = movieTab4.slice(0 ,6);
-    return movieTab5;
+
+    let movieTab6 = []
+    for (let i = 0; i < movieTab5.length; i++) {
+        let movie = movieTab5[i];
+        url = `http://localhost:8000/api/v1/titles/${movie.id}`;
+        const resultJson = await fetch(url).then(resultJson => resultJson.json());
+        movieTab6.push(resultJson)
+    }
+
+    return movieTab6;
 }
 
 /**
@@ -132,10 +146,17 @@ export async function updateMovieTab(movieTab, selector) {
         const movie = movieTab[i];
         let element = modele.cloneNode(true);
         const h2 = element.querySelector("h2");
-        h2.innerText = movie.title;
+        h2.innerText = movie.original_title;
+        const boutton = element.querySelector(".button.button--style2");
+        const modale = document.getElementById("modal_dialog");
+        boutton.addEventListener('click', (event) => {
+            modale.showModal();
+            getMovie(movie.id)
+        });
         base_node.appendChild(element);
         setSrcImageMovie(element, movie.image_url);
     }
+
 }
 
 /**
