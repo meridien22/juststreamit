@@ -1,7 +1,7 @@
 import {setSrcImageMovie} from "./movie.js";
 
 /**
- * Affecte les actions d'ouvrir et de fermer la fenêtre modale
+ * Affecte les actions d'ouvrir et de fermer la fenêtre modale.
  */
 export function setActionModal(){
     const modale = document.getElementById("modal_dialog");
@@ -27,7 +27,8 @@ export function setActionModal(){
     }}
 
 /**
- * 
+ * Rempli les champs de la fenêtre modale à partir de l'identifiant d'un film.
+ * @param {inerger} idMovie - identifiant du film
  */
 export async function getMovie(idMovie) {
     const url = `http://localhost:8000/api/v1/titles/${idMovie}`;
@@ -40,9 +41,13 @@ export async function getMovie(idMovie) {
     const duration = fetchResult.duration;
     const countries = fetchResult.countries.join(" / ");
     const imdb_score = fetchResult.imdb_score;
+    let rated = fetchResult.rated;
+    if (parseInt(rated, 10) > 0) {
+        rated = "PG-" + rated;
+    }
     const worldwide_gross_income = (fetchResult.worldwide_gross_income / 1000000).toFixed(1);
     const detail = `${year} - ${genre}
-        ?PG-13? - ${duration} minutes (${countries})
+        ${rated} - ${duration} minutes (${countries})
         IMDB score: ${imdb_score}/10
         Recettes au box-office: \$${worldwide_gross_income}m
     `;
