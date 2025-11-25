@@ -34,8 +34,7 @@ export function updateBestMovie(movie) {
 
 /**
  * Met à jour l'attribut src d'une balise image.
- * Si l'url de l'image n'est pas valide, elle est remplacée par l'url d'une image aléatoire
- * porvenant du site https://picsum.photos
+ * Si l'url de l'image n'est pas valide, elle est remplacée par une URL locale valide.
  * @param {string} element - Element du DOM dans lequel se trouve l'image.
  * @param {string} url - Url de l'image.
  */
