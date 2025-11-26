@@ -1,8 +1,11 @@
 import {getTheBestMovie, updateBestMovie, getBestMovie,  updateMovieTab,
-    setActionDisplay, setActionSelect
+    setActionDisplay, setSelectCategory, setActionSelect
 } from "./movie.js";
 
 import {setActionModal} from "./modal.js";
+
+// Construit le menu select pour les catégories
+setSelectCategory("select_category")
 
 // Ajout des événements au site
 setActionDisplay("best_movie_all_category")

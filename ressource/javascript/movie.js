@@ -63,10 +63,13 @@ export async function getBestMovie(category = null, idMovie = null) {
     // les résltats de la première page
     let fetchResult = await fetch(url).then(fetchResult => fetchResult.json());
     const movieTab1 = fetchResult.results;
-    // les résltats de la deuxième page
-    url = fetchResult.next
-    fetchResult = await fetch(url).then(fetchResult => fetchResult.json());
-    const movieTab2 = fetchResult.results;
+    let movieTab2 = [];
+    if (fetchResult.next != null) {
+        // les résltats de la deuxième page
+        url = fetchResult.next
+        fetchResult = await fetch(url).then(fetchResult => fetchResult.json());
+        movieTab2 = fetchResult.results;
+    }
     // les résultats des 2 premières pages
     const movieTab3 = [...movieTab2, ...movieTab1];
     // on enlève un film si besoin
@@ -146,6 +149,29 @@ export function setActionDisplay(selector){
             }
         }
     })
+}
+
+/**
+ * Récupére toures les catégories dispobibles et construit le select
+ */
+export async function setSelectCategory(selector){
+    let url = "http://localhost:8000/api/v1/genres"
+    let fetchResult = await fetch(url).then(fetchResult => fetchResult.json());
+    let categoryTab = fetchResult.results;
+    while (fetchResult.next != null) {
+        url = fetchResult.next;
+        fetchResult = await fetch(url).then(fetchResult => fetchResult.json());
+        categoryTab = [...categoryTab, ...fetchResult.results];
+    }
+    const modele = document.createElement('option');
+    const base_node = document.querySelector(`.${selector}`);
+    for (let i = 0; i < categoryTab.length; i++) {
+         let element = modele.cloneNode(true);
+         element.value = categoryTab[i].name;
+         element.innerText = categoryTab[i].name;
+         base_node.appendChild(element)
+    }
+
 }
 
 /**
